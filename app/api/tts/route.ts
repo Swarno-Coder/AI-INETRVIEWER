@@ -3,9 +3,13 @@ import { createClient } from '@deepgram/sdk';
 
 export async function POST(request: NextRequest) {
   try {
-    const { text } = await request.json();
+    const body = await request.json();
+    const { text } = body;
+    
+    console.log('🎵 TTS Request received:', { hasText: !!text, textLength: text?.length, text: text?.substring(0, 50) });
 
-    if (!text) {
+    if (!text || text.trim() === '') {
+      console.error('❌ TTS Error: No text provided', body);
       return NextResponse.json({ error: 'Text is required' }, { status: 400 });
     }
 

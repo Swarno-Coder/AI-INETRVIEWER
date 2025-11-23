@@ -167,6 +167,13 @@ export function useInterview() {
   // Play text using Deepgram TTS
   const playTextToSpeech = async (text: string) => {
     try {
+      console.log('🔊 TTS Request:', { text, length: text?.length });
+      
+      if (!text || text.trim() === '') {
+        console.error('❌ Cannot play empty text');
+        return;
+      }
+      
       setIsAISpeaking(true);
       
       const response = await fetch('/api/tts', {
@@ -175,7 +182,11 @@ export function useInterview() {
         body: JSON.stringify({ text }),
       });
 
-      if (!response.ok) throw new Error('TTS request failed');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('❌ TTS Error Response:', response.status, errorData);
+        throw new Error(`TTS request failed: ${response.status}`);
+      }
 
       const audioBlob = await response.blob();
       const audioUrl = URL.createObjectURL(audioBlob);

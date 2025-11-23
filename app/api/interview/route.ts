@@ -49,6 +49,8 @@ export async function POST(request: NextRequest) {
     const result = await chat.sendMessage(lastMessage.content);
     const response = await result.response;
     const reply = response.text();
+    
+    console.log('🤖 Gemini Response:', { reply, length: reply.length });
 
     // Check if interview should end
     const shouldEnd = reply.includes('Thank you for your time, we will get back to you soon');
