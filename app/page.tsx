@@ -24,10 +24,10 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-            100x AI Interviewer
+            Hello, I'm Swarnodip
           </h1>
           <p className="text-corporate-light text-lg">
-            Your next-generation AI-powered interview experience
+            Ask me anything - I'll answer as Swarnodip would
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="mb-8 min-h-[200px] max-h-[300px] overflow-y-auto bg-white/5 rounded-xl p-6 backdrop-blur">
             {conversationHistory.length === 0 && !isInterviewActive ? (
               <p className="text-center text-corporate-light/70 text-lg">
-                Click "Start Interview" to begin your AI interview session
+                Click "Start Session" to begin asking questions
               </p>
             ) : (
               <div className="space-y-4">
@@ -63,7 +63,7 @@ export default function Home() {
                       }`}
                     >
                       <p className="text-sm font-medium mb-1">
-                        {msg.role === 'user' ? 'You' : 'AI Interviewer'}
+                        {msg.role === 'user' ? 'Interviewer' : 'Swarnodip (AI)'}
                       </p>
                       <p>{msg.content}</p>
                     </div>
@@ -72,7 +72,7 @@ export default function Home() {
                 {currentTranscript && (
                   <div className="flex justify-end">
                     <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-corporate-accent/50 text-white border border-corporate-accent">
-                      <p className="text-sm font-medium mb-1">You (speaking...)</p>
+                      <p className="text-sm font-medium mb-1">Interviewer (speaking...)</p>
                       <p className="italic">{currentTranscript}</p>
                       <button
                         onClick={submitCurrentTranscript}
@@ -94,7 +94,7 @@ export default function Home() {
                 onClick={startInterview}
                 className="px-8 py-4 bg-gradient-to-r from-corporate-secondary to-corporate-accent text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
-                Start Interview
+                Start Session
               </button>
             ) : (
               <>
@@ -135,8 +135,8 @@ export default function Home() {
 
                 <p className="text-white text-sm">
                   {isMicActive 
-                    ? 'Listening... (Press again to stop recording and click send now button to send message)' 
-                    : 'Click here to speak'}
+                    ? 'Listening to your question... (Press again to stop, then click "Send Now")' 
+                    : 'Click to ask a question'}
                 </p>
 
                 {/* End Interview Button */}
@@ -144,7 +144,7 @@ export default function Home() {
                   onClick={endInterview}
                   className="mt-4 px-6 py-2 bg-red-500/80 hover:bg-red-600 text-white rounded-full font-medium shadow-md transform hover:scale-105 transition-all duration-200"
                 >
-                  End Interview
+                  End Session
                 </button>
               </>
             )}
@@ -154,7 +154,7 @@ export default function Home() {
           {isAISpeaking && (
             <div className="mt-6 text-center">
               <p className="text-corporate-light text-sm animate-pulse">
-                AI Interviewer is speaking...
+                Swarnodip is answering...
               </p>
             </div>
           )}

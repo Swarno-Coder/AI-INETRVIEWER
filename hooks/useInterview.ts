@@ -56,13 +56,6 @@ export function useInterview() {
       // Play AI response
       await playTextToSpeech(reply);
 
-      // Check if interview should end
-      if (shouldEnd || reply.includes('Thank you for your time, we will get back to you soon')) {
-        console.log('👋 Interview ending...');
-        setIsInterviewActive(false);
-        setIsMicActive(false);
-      }
-
     } catch (error) {
       console.error('❌ Interview API error:', error);
       alert('Sorry, there was an error processing your response. Please try again.');
@@ -156,7 +149,7 @@ export function useInterview() {
     setIsInterviewActive(true);
     
     // Greet the user
-    const greeting = "Hello! Welcome to your interview session. I'm your AI interviewer today. Let's begin with a simple question: Can you tell me about yourself and your background?";
+    const greeting = "Hello! I'm Swarnodip's AI voice assistant. I'm here to answer your interview questions on his behalf. Feel free to ask me anything about his background, skills, experience, or aspirations. What would you like to know?";
     
     setConversationHistory([{ role: 'assistant', content: greeting }]);
     
