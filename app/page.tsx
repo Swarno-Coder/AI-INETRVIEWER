@@ -134,7 +134,9 @@ export default function Home() {
                 </button>
 
                 <p className="text-white text-sm">
-                  {isMicActive ? 'Listening... (Auto-sends after pause)' : 'Click to speak'}
+                  {isMicActive 
+                    ? 'Listening... (Press again to stop recording and click send now button to send message)' 
+                    : 'Click here to speak'}
                 </p>
 
                 {/* End Interview Button */}
@@ -161,7 +163,7 @@ export default function Home() {
         {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-corporate-light/60 text-sm">
-            Powered by Deepgram, LiveKit & Google Gemini
+            Powered by Deepgram, & Google Gemini
           </p>
         </div>
       </div>
